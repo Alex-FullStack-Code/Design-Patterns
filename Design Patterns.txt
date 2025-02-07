@@ -1,0 +1,687 @@
+##########
+Creational  
+##########
+
+ Creational patterns are focused towards 
+ how to instantiate an object or 
+ group of related objects.
+ 
+ Deal with object creation mechanisms, 
+ trying to create objects in a manner 
+ suitable to the situation. 
+ 
+ The basic form of object creation 
+ could result in design problems or 
+ added complexity to the design. 
+ 
+ Creational design patterns solve this problem 
+ by somehow controlling this object creation.
+ 
+ 
+ 1. Simple Factory
+ 2. Factory Method
+ 3. Abstract Factory
+ 4. Builder
+ 5. Prototype
+ 6. Singleton
+
+ **************** 
+ 1.Simple Factory
+ **************** 
+ вие изграждате къща и имате нужда от врати. 
+ Би било бъркотия, ако всеки път, 
+ когато имате нужда от врата, 
+ облечете дрехите си за дърводелец и 
+ започнете да правите врата в къщата си. 
+ Вместо това го правите от фабрика.
+ 
+ Simple factory simply generates 
+ an instance for client 
+ without exposing any 
+ instantiation logic to the client.
+ 
+ Simple Factory /DoorFactory/ е обект 
+ за създаване на други обекти, 
+ Factory е функция или метод, 
+ който връща обекти на различен прототип или клас 
+ от някакво повикване на метода, 
+ който се приема, че е „нов“.
+ 
+ Когато създаването на обект 
+ не е само няколко задачи и включва някаква логика, 
+ има смисъл да го поставите в Simple Factory, 
+ вместо да повтаряте един и същ код навсякъде.
+ 
+ **************** 
+ 2.Factory Method
+ **************** 
+ Помислете за hiring manager. 
+ Невъзможно е един човек да интервюира за всяка от позициите. 
+ Въз основа на на работата позиция,
+ трябва да реши и делегира стъпките на 
+ интервюто към различни хора.
+ 
+ Factory Method deal with the problem of 
+ creating objects without 
+ having to specify the exact class 
+ of the object that will be created. 
+ 
+ Справя се с проблема при 
+ създаването на обекти, 
+ без да се налага да се определят 
+ точния клас на обекта, който ще бъде създаден. 
+ 
+ Това става чрез създаване на обекти 
+ чрез извикване на Factory Method: 
+ или посочен в интерфейс и реализиран от child classes, 
+ или реализиран в базов клас и по желание отменено от 
+ производни класове - по-скоро, 
+ отколкото чрез извикване на конструктор.
+ 
+ Полезно, когато има някаква обща обработка в клас, 
+ но необходимата подкласа е динамично решена по 
+ време на изпълнение. Или да го поставите с други думи, 
+ когато клиентът не знае какъв точен подклас може да се нуждае.
+ 
+ ******************
+ 3.Abstract Factory 
+ ****************** 
+ Разширяване на примера на вратата ни от Simple Factory. 
+ Въз основа на вашите нужди може да получите дървена врата от 
+ магазин за дървени врати, желязна врата от магазин за желязо 
+ или PVC врата от съответния магазин. 
+ Плюс се нуждае от заварчик и т.н. 
+ 
+ Abstract Factory предоставя 
+ начин за капсулиране на група от отделни factories, 
+ които имат обща тема, без да се посочват 
+ своите конкретни класове
+ 
+ **********
+ 4.Builder
+ **********
+ Например Simple Factory,
+ но има случаи, когато логиката на създаване 
+ може да включва повече стъпки. 
+ 
+ Например, имате няколко варианта 
+ как се прави бургерът ви: 
+ Какъв хляб искате? 
+ Какви видове сосове бихте искали? 
+ Какво сирене бихте искали? 
+ В такива случаи моделът на Builder идва на помощ.
+ 
+ Позволява ви да създавате 
+ различни спецификации/вкусове/ на даден обект, 
+ като същевременно избягвате замърсяването на конструктора. 
+ Полезно, когато може да има няколко спецификации/вкусове/ на обект. 
+ Или когато има много стъпки, участващи в създаването на обект.
+ 
+ public Burger(
+	int size, 
+	bool cheese, 
+	bool pepperoni, 
+	bool lettuce, 
+	bool tomato
+ )
+{ }
+
+ Както можете да видите; 
+ Броят на параметрите на конструктора може 
+ бързо да излезе от употреба и може да стане трудно 
+ да се разбере подреждането на параметрите. 
+ 
+ Плюс този списък с параметри може да продължи да расте, 
+ ако искате да добавите още опции в бъдеще. 
+ Това се нарича телескопичен конструктор anti-pattern.
+ 
+ Алтернативата е Builder,
+ виж демото!
+ 
+ ***********
+ 5.Prototype
+ ***********
+ Create object based on 
+ an existing object through cloning.
+ 
+ Накратко, позволява да създадете копие 
+ на съществуващ обект и да го променяте 
+ на вашите нужди, вместо да преминавате през 
+ проблема със създаването на обект от 
+ нулата и настройването му.
+ 
+ ***********
+ 6.Singleton
+ ***********
+ Ensures that only one object of 
+ a particular class is ever created.
+ 
+ This is useful when 
+ exactly one object is needed to 
+ coordinate actions across the system.
+ 
+ There are 4 main disadvantages:
+ - dependency hiding.
+ - difficult to unit test the code.
+ - It can lead to tightly coupled code.
+ - If the single Instance of the object becomes corrupted, 
+   the entire system is compromised.
+  
+  
+ ##########
+ Structural 
+ ##########
+ занимава се най-вече с Object Composition 
+ или с други думи how the entities can Use Each Other. 
+ Или още едно обяснение: How to build a software component? 
+ 
+ Structural pattern identify a simple way 
+ to realize relationships between entities.
+ 
+ 1. Adapter
+ 2. Bridge
+ 3. Composite
+ 4. Decorator
+ 5. Facade
+ 6. Flyweight
+ 7. Proxy
+ 
+ ********* 
+ 1.Adapter
+ ********* 
+ Помислете, че имате няколко снимки в 
+ картата си с памет и трябва да ги прехвърлите 
+ на вашия компютър. За да ги прехвърлите, 
+ имате нужда от някакъв вид адаптер, 
+ който е съвместим с вашите компютърни портове, 
+ така че да можете да прикачите карта с памет 
+ към вашия компютър. В този случай четецът на 
+ карти е адаптер. 
+ 
+ Друг пример е известният адаптер за захранване; 
+ Три крака ще бъде свързан към двустранна изхода, 
+ трябва да използва адаптер за захранване, 
+ който го прави съвместим с двата изхода. 
+ 
+ Adapter, lets you wrap 
+ an otherwise incompatible object in an adapter 
+ to make it compatible with another class.
+
+ Позволява интерфейса на съществуващ клас 
+ да се използва като друг интерфейс. 
+ Често се използва, за да накара съществуващите 
+ класове да работят с други, 
+ без да променят изходния им код.
+ 
+ ********
+ 2.Bridge 
+ ********
+ Помислете, че имате уебсайт с различни страници и 
+ трябва да позволите на потребителя да промени темата.
+ 
+ Какво бихте направили? 
+ Създайте множество копия на всяка от страниците 
+ за всяка от темите или 
+ просто бихте създали отделна тема и 
+ ще ги заредите въз основа на 
+ предпочитанията на потребителя? 
+ 
+ Bridge позволява да направите отделна тема. 
+ Bridge е свързан с предпочитането на 
+ Composition пред Inheritance. 
+ 
+ Bridge има за цел да 
+ "Decouple Abstraction from Implementation, 
+  така че да могат да варират independently"
+ 
+ ***********
+ 3.Composite  
+ ***********
+ Всяка организация е съставена от служители. 
+ Всеки от служителите има същите функции, 
+ т.е. има заплата, има някои отговорности, 
+ може или не може да докладва на някого, 
+ може или да не има някои подчинени и т.н.
+ 
+ Composite lets 
+ the clients treat the individual objects 
+ in a uniform manner./eднообразен/
+  
+ Composite описва, че 
+ група от обекти трябва да се третира 
+ по същия начин като един екземпляр на обект. 
+ 
+ Намерението на Composite е 
+ да „състави“ objects into tree structures, 
+ за да представлява йерархии от частично цяло. 
+ 
+ Прилагането на Composite позволява на 
+ клиентите да третират отделни обекти и 
+ композиции равномерно.
+ 
+ ***********
+ 4.Decorator   
+ ***********
+ Представете си, че 
+ управлявате магазин за автомобилни услуги, 
+ предлагащ множество услуги. 
+ 
+ Сега как да изчислите сметката, 
+ която ще бъде таксувана? 
+ 
+ Избирате една услуга и 
+ динамично продължавате да добавяте към нея 
+ цените за предоставените услуги, 
+ докато не получите крайната цена. 
+ Тук всеки тип услуга е Decorator.
+ 
+ Decorator lets you 
+ dynamically change 
+ the behavior of an object 
+ at run time 
+ by wrapping them in 
+ an object of a Decorator class.
+ 
+ Decorator позволява 
+ поведението да се добавя към отделен обект, 
+ статично или динамично, 
+ без да влияе на поведението на 
+ други обекти от един и същи клас. 
+ 
+ Decorator често е полезен за 
+ придържане към Single Responsibility, 
+ тъй като позволява функционалността да бъде 
+ разделена между класовете с 
+ unique areas of concern.
+ 
+ ******** 
+ 5.Facade    
+ ********
+ Как да включите компютъра? 
+ "Натиснете бутона за захранване"
+ защото използвате прост интерфейс, 
+ който компютърът предоставя отвън, 
+ вътрешно трябва да направи много нещa. 
+ 
+ Този прост интерфейс към 
+ сложната подсистема е Facade
+ 
+ Facade provides a simplified interface 
+ to a complex subsystem.
+ 
+ A facade is an object that 
+ provides a simplified interface to 
+ a larger body of code, such as a class library.
+
+ *********** 
+ 6.Flyweight    
+ ***********
+ Случвало ли ви се е 
+ да сте имали пресен чай от някаква сергия? 
+ Те често правят повече от една чаша, 
+ която сте поискали, и спестяват останалото 
+ за всеки друг клиент, 
+ така че да спестите ресурсите, напр. Газ и др. 
+ Flyweight е свързан с това
+ 
+ It is used to minimize memory usage or 
+ computational expenses 
+ by sharing as much as possible 
+ with similar objects.
+
+ Flyweight е обект, който свежда до минимум 
+ използването на паметта 
+ чрез споделяне на възможно най-много данни 
+ с други подобни обекти; 
+ 
+ Това е начин да използвате обекти в голям брой, 
+ когато просто повтарящо се представяне би 
+ използвало неприемливо количество памет.
+ 
+ ******* 
+ 7.Proxy    
+ *******
+ Използвали ли сте някога карта за достъп, 
+ за да влезете през врата? 
+ 
+ Има множество опции за отваряне на тази врата, 
+ т.е. тя може да бъде отворена или 
+ с помощта на карта за достъп, или 
+ чрез натискане на бутон, 
+ който заобикаля сигурността. 
+ 
+ Основната функционалност на вратата е 
+ да се отвори, но отгоре има прокси, 
+ за да се добави някаква функционалност. 
+ 
+ Using the Proxy, 
+ a class represents the functionality 
+ of another class.
+
+ Proxy, в най-общата си форма е клас, 
+ функциониращ като интерфейс към нещо друго. 
+ 
+ Проксито е wrapper or agent object, 
+ който се извиква от клиента за достъп до 
+ реалния обект за обслужване зад кулисите. 
+ 
+ Използването на проксито може просто да 
+ препраща към реалния обект или 
+ да осигури допълнителна логика. 
+ 
+ В проксито може да се осигури 
+ допълнителна функционалност, 
+ например кеширане, когато операциите на 
+ реалния обект са интензивни ресурси или 
+ проверка на предпоставки преди да се извикат 
+ операциите на реалния обект.
+  
+  
+ ##########
+ Behavioral 
+ ########## 
+ Той се занимава с 
+ възлагане на отговорности между обектите.
+
+ Аssignment of responsibilities 
+ between the objects.
+
+ They answering: 
+ How to run a behavior in software component?
+
+ They identify 
+ common communication patterns 
+ between the objects and 
+ realize these patterns.
+
+ Increase flexibility in 
+ carrying out this communication.
+ 
+ 1. Chain of Responsibility
+ 2. Command
+ 3. Iterator
+ 4. Mediator
+ 5. Memento
+ 6. Observer
+ 7. Visitor
+ 8. Strategy
+ 9. State
+ 10. Template Method
+ 
+ *************************
+ 1.Chain of Responsibility
+ ************************* 
+ Например, в акаунта си имате 3 метода на плащане (A, B и C); 
+ всеки има различна сума в него. 
+ A има 100 USD, B има 300 USD, а C има 1000 USD, 
+ а предпочитанието към плащанията се избира 
+ като след това B, след това C. 
+ 
+ Опитвате се да закупите нещо, което струва 210 USD. 
+ Използвайки Chain of Responsibility, на първо място А.  
+ 
+ А ще бъде проверена дали може да направи покупката, 
+ ако „да“ ще бъде направена покупката и 
+ веригата ще бъде прекъсната. 
+ 
+ Ако не, заявката ще продължи напред към 
+ проверка на акаунта B за сума, 
+ ако не издържи проверката,
+ веригата бъде прекъсната, 
+ заявката ще продължи да препраща, 
+ докато не намери подходящия манипулатор. 
+ 
+ Тук A, B и C са връзки на веригата и 
+ цялото явление е верига на отговорност.
+ 
+ It helps building a Chain of Objects. 
+ Request enters from one end and 
+ keeps going from object to object 
+ till it finds the suitable handler.
+ 
+ In object-oriented design, 
+ the chain-of-responsibility pattern is 
+ a design pattern consisting of 
+ a source of command objects and 
+ a series of processing objects. 
+ 
+ Each processing object contains logic 
+ that defines the types of command objects 
+ that it can handle; 
+ the rest are passed to the next 
+ processing object in the chain.
+ 
+ *********
+ 2.Command
+ *********  
+ Общ пример би бил да поръчате храна в ресторант. 
+ Вие (т.е. Client) помолите сервитьора (т.е. Invoker) 
+ да донесе някаква храна (т.е. Command) и 
+ сервитьорът просто препраща заявката към 
+ готвача (т.е. Receiver), 
+ който има знания за това какво и как да готви. 
+ 
+ Друг пример е вие ​​(т.е. Client) да включите 
+ (т.е. Command) телевизора (т.е. Receiver), 
+ използвайки дистанционно управление (Invoker).	
+ 
+ Allows you to Encapsulate Actions in Objects. 
+ 
+ The key idea behind this pattern is to 
+ provide the means to decouple Client from Receiver.
+  
+  
+ **********
+ 3.Iterator
+ **********
+ MP3 плейър или TV, 
+ където можете да натиснете следващите и 
+ предишните бутони, за да преминете през 
+ последователните канали или 
+ с други думи, всички те предоставят интерфейс, 
+ за да повтарят съответните канали, 
+ песни или радиостанции.
+ 
+ iterator is used to traverse a container 
+ and access the container's elements. 
+ 
+ The iterator pattern decouples 
+ algorithms from containers; 
+ 
+ in some cases, algorithms are 
+ necessarily container-specific 
+ and thus cannot be decoupled.
+
+ In C# it can be done by implementing IEnumerable. 
+ Translating our radio statiIons example from above. 
+ First of all we have RadioStation.
+ 
+ 
+ **********
+ 4.Mediator
+ **********
+ когато говорите с някого на мобилния си телефон, 
+ между вас и другия има internet provider и 
+ разговорът ви преминава през него, 
+ вместо да бъде изпратен директно. 
+ В този случай internet provider е Mediator.
+  
+ Mediator добавя обект като трета страна Mediator, 
+ за да контролира взаимодействието между 
+ 2 обекта (наречени колеги). 
+
+ Намалява coupling между класовете, общуващи помежду си.
+
+ Mediator pattern adds 
+ a third party object (called mediator) to 
+ Control the Interaction between 
+ 2 objects (called colleagues).
+
+ It helps Reduce the Coupling 
+ between the classes communicating with each other. 
+
+ Because now they don't need to have 
+ the knowledge of each other's implementation.
+
+ Mediator defines an object that Encapsulates 
+ how a Set of Objects Interact. 
+
+
+ *****************************
+ 5.Memento - спомен, напомняне
+ *****************************
+ примерно калкулатора (т.е. инициатор), 
+ всеки път, когато извършите някакво изчисление, 
+ последното изчисление се запазва в паметта (т.е. memento), 
+ така че да можете да се върнете към него и 
+ може би да го възстановите с помощта на 
+ някои бутони за действие.
+
+ Memento е за улавяне и съхраняване на 
+ текущото състояние на даден обект по начин, 
+ по който той може да бъде възстановен по-късно.
+
+ Memento pattern is about 
+ capturing and storing the current state 
+ of an object in a manner that 
+ it can be restored later on in a smooth manner.
+
+ Memento provides the ability to 
+ restore an object to its previous state 
+ /undo via rollback/.
+
+ 
+ **********
+ 6.Observer 
+ **********
+ job seekers, where they subscribe 
+ to some job posting site and 
+ they are notified whenever there is 
+ a matching job opportunity.
+ 
+ Defines a dependency between objects 
+ so that whenever an object changes its state, 
+ all its dependents are notified.
+
+ Аn object, called the subject, 
+ maintains a list of its dependents, called observers, 
+ and notifies them automatically of any state changes, 
+ usually by calling one of their methods.
+ 
+ 
+ *********
+ 7.Visitor 
+ *********
+ lets you Add 
+ Further Operations to Objects 
+ without having to modify them.
+ 
+ В обектно-ориентираното програмиране и 
+ софтуерно инженерство visitor design pattern е 
+ начин за отделяне на алгоритъм от 
+ обектна структура, върху която работи. 
+ 
+ Практически резултат от това разделяне е 
+ способността да се добавят нови операции към 
+ съществуващите обектни структури, 
+ без да променят тези структури. 
+ 
+ Това е един от начините да 
+ следвате open/closed principle.
+  
+  
+ **********
+ 8.Strategy 
+ **********
+ Помислете за примера за сортиране, 
+ ние внедрихме bubble sort, 
+ но данните започнаха да растат и 
+ bubble sort започна да става много бавен. 
+ 
+ За да се справим с това, реализирахме Quick sort. 
+ Но сега, въпреки че Quick sort 
+ се справяше по-добре за големи набори от данни, 
+ той беше много бавен за по-малки набори от данни. 
+ 
+ За да се справим с това, 
+ ние внедрихме Стратегия, 
+ при която за малки набори от данни 
+ ще се използва bubble sort и 
+ за по-голям quick sort. 
+  
+ Strategy pattern allows you 
+ to switch the algorithm or 
+ strategy based upon the situation.
+ 
+ pattern enables 
+ an algorithm's behavior 
+ to be selected at runtime.
+
+
+ *******
+ 9.State 
+ *******
+ Представете си, че използвате 
+ някакво приложение за рисуване, 
+ избирате четката за боя. 
+ Сега четката променя поведението си 
+ въз основа на избрания цвят, 
+ т.е. ако сте избрали червен цвят, 
+ тя ще рисува в червено, 
+ ако е синьо, тогава тя ще 
+ бъде в синьо и т.н.
+   
+ State Pattern lets you change 
+ the behavior of a class 
+ when the state changes.  
+
+ implements a state machine in an object-oriented way. 
+ With the state pattern, a state machine is 
+ implemented by implementing each 
+ individual state as a derived class of 
+ the state pattern interface, and 
+ implementing state transitions by 
+ invoking methods defined by the pattern's superclass. 
+ 
+ The State Pattern can be interpreted as 
+ a Strategy Pattern which is able to switch 
+ the current strategy through 
+ invocations of methods 
+ defined in the pattern's interface.
+ 
+ 
+ ******************
+ 10.Template Method
+ ******************
+ Да предположим, че получаваме някаква къща построена. 
+ Стъпките за изграждане може да изглеждат като
+
+ 1.Подгответе основата на къщата
+ 2.Изградете стените
+ 3.Добавете покрива
+ 4.Добавете други етажи
+ 
+ Редът на тези стъпки никога не може да бъде променен, 
+ т.е. не можете да изградите покрива, преди да 
+ изградите стените и т.н., 
+ но всяка стъпка може да бъде модифицирана 
+ например стените 
+ могат да бъдат направени от 
+ дърво или полиестер или камък.
+ 
+ Template method defines 
+ the skeleton of how a certain algorithm 
+ could be performed, but defers 
+ the implementation of 
+ those steps to the children classes.
+
+ Template method is 
+ defines the program skeleton of 
+ an algorithm in an operation, 
+ deferring some steps to subclasses. 
+ 
+ Template method позволява човек да 
+ предефинира определени стъпки на алгоритъма, 
+ без да променя структурата на алгоритъма.
+ 
+ 
